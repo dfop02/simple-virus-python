@@ -1,5 +1,5 @@
 from __future__ import print_function
-import os
+import os, time
 
 def search():
 	for filename in os.listdir("."):
@@ -7,8 +7,12 @@ def search():
 
 def infect(filename):
 	print (filename, end='')
-		if not filename.startswith("infected"):
-			print (" not infected...")
-			os.rename(filename, "infected")
+	if filename.startswith("infected"):
+		print (" infected")
+	else:
+		print (" not infected yet...", end='')
+		time.sleep(5)
+		print (" Infecting...")
+		#os.rename(filename, "infected")
 
 search()
