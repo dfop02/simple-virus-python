@@ -2,7 +2,7 @@
 
 Projeto feito no python 2.7.
 
-[English](https://github.com/dfop02/simple-virus-python/README_en.md) | [Português-BR](https://github.com/dfop02/simple-virus-python/README.md)
+[English](https://github.com/dfop02/simple-virus-python/blob/master/README_en.md) | [Português-BR](https://github.com/dfop02/simple-virus-python/blob/master/README.md)
 
 ### Objetivo
 
